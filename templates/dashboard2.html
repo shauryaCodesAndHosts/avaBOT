@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Trainer</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>AVABOT trainer</h1>
+        <hr>
+        <form action="/dashboard" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="trainingData">Upload Training Data:</label>
+                <input type="file" class="form-control-file" id="trainingData" name="trainingData">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+        <hr>
+        {% if previous_logs %}
+            <h2>Previous Uploaded Documents:</h2>
+            <ul class="list-group">
+                {% for log in previous_logs %}
+                    <li class="list-group-item"><a href="{{path}}/{{ log.fileName|replace('%20', ' ') }}">{{ log.fileName }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <!-- Box to display the chatbot URL -->
+        <div class="card mt-5">
+            <div class="card-header">
+                Chatbot URL
+            </div>
+            <div class="card-body">
+                <p class="card-text">URL: <span id="chatbot"><a href="{{url_of_chatbot}}">{{url_of_chatbot}}</a></span></p>
+                <button class="btn btn-primary" onclick="chat()">Chat with the bot</button>
+            </div>
+        </div>
+        
+        <!-- Retrain button for the chatbot -->
+        <a href="http://localhost:5000/retrain"><button class="btn btn-danger mt-3">Retrain Chatbot</button></a><br>
+        <a href="http://localhost:5000/stopBOT"><button class="btn btn-danger mt-3">Stop Chatbot</button></a><br>
+        <a href="http://localhost:5000/startChatBot"><button class="btn btn-danger mt-3">Start Chatbot</button></a><br>
+        <a href="http://localhost:5000/logout"><button class="btn btn-danger mt-3">Logout</button></a><br>
+        
+        <!-- Other useful information can be added here -->
+    </div>
+    
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Function to make POST request to chat with the bot
+        function chat() {
+            var url = document.getElementById("chatbot-url").textContent;
+            // Implement your logic for chatting with the bot here
+            console.log("Chatting with bot at URL:", url);
+        }
+        
+        // Function to handle retraining of the chatbot
+        function retrain() {
+            // Implement your logic for retraining the chatbot here
+            console.log("Retraining the chatbot...");
+            function retrain() {
+    // URL to make the GET request
+    var url = "localhost:5000/retrain"; // Replace this with your actual URL
+    
+    // Make the GET request
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            // Handle the response if needed
+            console.log(data);
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('There was a problem with the fetch operation:', error);
+        });
+}
+        }
+    </script>
+</body>
+</html>

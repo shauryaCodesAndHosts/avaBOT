@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h1 class="mx-4 my-3">Sign Up for AVABOT</h1> 
+
+    <div class="mx-5 my-1">
+        <form method="POST" action="/signup">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+              <label for="firstName">Company Name</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="Name of your organisation" name="companyName" required>
+              </div>
+            </div>
+              <div class="form-group col-md-6">
+              <label for="firstName">User ID</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="Enter a unique User ID" name="userID" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="customerMailId" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="userPassword" required>
+              </div>
+            
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                <label class="form-check-label" for="gridCheck">
+                  Agree to our Terms and Conditions 
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </form>        
+</div>
+
+    <div class="mx-5 my-4">
+    <small class=" text-muted">Already have and account ?</small>
+    <div>
+    <h2><a href="{{url_for('login')}}" >Log In </a></h2>
+</div>
+</div>
+
+
+  </body>
+</html>
